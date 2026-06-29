@@ -103,3 +103,36 @@ print("Users:", users)
 def deploy_code():
 	pass
 print("Deployment logic will be implemented here")
+
+# Yield (generator)
+def stream_generator():
+	yield "INFO: Deployment Started"
+	yield "ERROR: S3 bucket not found"
+
+for log in stream_generator():
+	print("Log:", log)
+
+# Raise
+# raise RuntimeError("Simulated AWS error")
+
+# Membership & identity
+roles = ["Admin" , "Devops"]
+roles_backup = ["Admin", "DevOps"]
+if "Devops" in roles:
+	print("Role Exist")
+print(roles == roles_backup)
+print("Check identity:", roles is roles)
+
+# Async/Await (simplified demo)
+import asyncio
+
+async def fetch_ec2():
+	print("Fetching ec2")
+async def fetch_s3():
+	print("Fetching s3")
+
+async def main():
+	await asyncio.gather(fetch_ec2(), fetch_s3())
+
+asyncio.run(main())
+
